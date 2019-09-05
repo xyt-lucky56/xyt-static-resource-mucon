@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fengunion.scf.data.sysFile.mapper.SysFileMapper">
+	
+	<resultMap id="rm" type="com.xyt.rescource.model.SysFile">
+		<result property="id" jdbcType="VARCHAR" column="id" />
+		<result property="fkRelId" jdbcType="VARCHAR" column="fk_rel_id" />
+		<result property="fileName" jdbcType="VARCHAR" column="file_name" />
+		<result property="fileFormat" jdbcType="VARCHAR" column="file_format" />
+		<result property="fileType" jdbcType="VARCHAR" column="file_type" />
+		<result property="fileRealName" jdbcType="VARCHAR" column="file_real_name" />
+		<result property="filePath" jdbcType="VARCHAR" column="file_path" />
+		<result property="fileSize" jdbcType="DOUBLE" column="file_size" />
+		<result property="remark" jdbcType="VARCHAR" column="remark" />
+		<result property="createId" jdbcType="VARCHAR" column="create_id" />
+		<result property="createName" jdbcType="VARCHAR" column="create_name" />
+		<result property="createTime" jdbcType="TIMESTAMP" column="create_time" />
+		<result property="lastModifyId" jdbcType="VARCHAR" column="last_modify_id" />
+		<result property="lastModifyName" jdbcType="VARCHAR" column="last_modify_name" />
+		<result property="lastModifyTime" jdbcType="TIMESTAMP" column="last_modify_time" />
+		<result property="lastModifyIp" jdbcType="VARCHAR" column="last_modify_ip" />
+		<result property="valid" jdbcType="INTEGER" column="valid" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+        	id,
+        	fk_rel_id,
+        	file_name,
+        	file_format,
+        	file_type,
+        	file_real_name,
+        	file_path,
+        	file_size,
+        	remark,
+        	create_id,
+        	create_name,
+        	create_time,
+        	last_modify_id,
+        	last_modify_name,
+        	last_modify_time,
+        	last_modify_ip,
+        	valid
+	</sql>
+	
+		
+	<sql id="where">
+		<where>
+		1=1 and VALID = 1
+			<if test="id != null">
+				AND id = #{id}
+			</if>
+			<if test="fkRelId != null">
+				AND fk_rel_id = #{fkRelId}
+			</if>
+			<if test="fileName != null">
+				AND file_name = #{fileName}
+			</if>
+			<if test="fileFormat != null">
+				AND file_format = #{fileFormat}
+			</if>
+			<if test="fileType != null">
+				AND file_type = #{fileType}
+			</if>
+			<if test="fileRealName != null">
+				AND file_real_name = #{fileRealName}
+			</if>
+			<if test="filePath != null">
+				AND file_path = #{filePath}
+			</if>
+			<if test="fileSize != null">
+				AND file_size = #{fileSize}
+			</if>
+			<if test="remark != null">
+				AND remark = #{remark}
+			</if>
+			<if test="createId != null">
+				AND create_id = #{createId}
+			</if>
+			<if test="createTime != null">
+				AND create_time = #{createTime}
+			</if>
+			<if test="createName != null">
+				AND create_name = #{createName}
+			</if>
+			<if test="lastModifyId != null">
+				AND last_modify_id = #{lastModifyId}
+			</if>
+			<if test="lastModifyName != null">
+				AND last_modify_name = #{lastModifyName}
+			</if>
+			<if test="lastModifyTime != null">
+				AND last_modify_time = #{lastModifyTime}
+			</if>
+			<if test="lastModifyIp != null">
+				AND last_modify_ip = #{lastModifyIp}
+			</if>
+		</where>
+	</sql>
+
+	
+	    <!-- 批量新增 -->
+	<insert id="saveSysFileBatch" parameterType="list">
+		INSERT INTO t_sys_file(id,
+		fk_rel_id,file_name,file_format,file_type,file_num,file_desc,remark,file_real_name,file_path,file_size,
+		fk_project_id,added_by,added_by_name,added_time,
+		last_modified_by,last_modified_by_name,last_modified_time,last_modified_ip,valid)
+		<foreach collection="list" item="obj" separator="union all">
+			select
+			#{obj.id,jdbcType=VARCHAR},
+			#{obj.fkRelId,jdbcType=VARCHAR},#{obj.fileName,jdbcType=VARCHAR},
+			#{obj.fileFormat,jdbcType=VARCHAR},#{obj.fileType,jdbcType=VARCHAR},
+			#{obj.fileNum,jdbcType=VARCHAR},#{obj.fileDesc,jdbcType=VARCHAR},
+			#{obj.remark,jdbcType=VARCHAR},#{obj.fileRealName,jdbcType=VARCHAR},
+			#{obj.filePath,jdbcType=VARCHAR},#{obj.fileSize,jdbcType=INTEGER},
+			#{obj.fkProjectId,jdbcType=BIGINT},#{obj.addedBy,jdbcType=BIGINT},
+			#{obj.addedByName,jdbcType=VARCHAR},#{obj.addedTime,jdbcType=TIMESTAMP},
+			#{obj.lastModifiedBy,jdbcType=BIGINT},#{obj.lastModifiedByName,jdbcType=VARCHAR},
+			#{obj.lastModifiedTime,jdbcType=TIMESTAMP},#{obj.lastModifiedIp,jdbcType=VARCHAR},
+			#{obj.valid,jdbcType=INTEGER}
+			from dual
+		</foreach>
+	</insert>
+	
+</mapper>

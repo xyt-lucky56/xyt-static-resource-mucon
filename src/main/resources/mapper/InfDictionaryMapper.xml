@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xyt.resource.dao.InfDictionaryMapper">
+    <resultMap id="infDictionaryMap" type="com.xyt.rescource.model.InfDictionary">
+        <id column="id" property="_id" jdbcType="VARCHAR"/><!--  -->
+        <result column="contentName" property="contentName" jdbcType="VARCHAR"/><!-- 内容 -->
+        <result column="signName" property="signName" jdbcType="VARCHAR"/><!-- 标识 -->
+        <result column="defaultSelect" property="defaultSelect" jdbcType="INTEGER"/><!-- 是否选择（0：不选择，1：选择） -->
+        <result column="remark" property="remark" jdbcType="VARCHAR"/><!-- 备注 -->
+    </resultMap>
+    <!-- 注释：根据标识查询主数据 -->
+    <select id="getListOfInfDictionary" resultMap="infDictionaryMap" parameterType="java.lang.String">
+       SELECT
+        id
+        ,contentName
+        ,signName
+        ,defaultSelect
+        ,remark
+        FROM  inf_dictionary
+        <where>
+            1=1 AND stopSign = 0
+            <if test="signName != null">
+                AND signName = #{signName,jdbcType=VARCHAR}
+            </if>
+
+        </where>
+        ORDER BY sortNo
+    </select>
+
+    <!--插入主数据-->
+   <insert id="saveInfDictionary">
+     insert into inf_dictionary(id,contentName,sortNo,signName,stopSign,defaultSelect,remark) values(
+           #{_id},#{contentName},#{sortNo},#{signName},#{stopSign},#{defaultSelect},#{remark}
+     )
+   </insert>
+    <!--更新主数据-->
+    <update id="updateInfDictionaryByPrimaryKey">
+        update inf_dictionary
+        <set>
+            <if test="contentName !=null">
+                contentName=#{contentName},
+            </if>
+            <if test="signName !=null">
+                signName=#{signName},
+            </if>
+            <if test="defaultSelect !=null">
+                defaultSelect=#{defaultSelect},
+            </if>
+            <if test="remark !=null">
+                remark=#{remark},
+            </if>
+       </set>
+        <where>
+            id = #{_id}
+        </where>
+
+    </update>
+    <!--设置禁用-->
+    <update id="updateInfDictionaryToDisable">
+        update  inf_dictionary
+        <set>
+            stopSign = #{stopSign}
+        </set>
+        <where>
+            id = #{id}
+        </where>
+
+    </update>
+
+    <!--查询主数据表通过相关条件-->
+   <select id="selInfDictionaryByJointCondition" resultMap="infDictionaryMap">
+       SELECT
+           id
+           ,contentName
+           ,signName
+           ,defaultSelect
+           ,remark
+       FROM  inf_dictionary
+       <where>
+           1=1
+           <if test="signName !=null">
+               AND signName = #{signName}
+           </if>
+           <if test="contentName !=null">
+               AND contentName = #{contentName}
+           </if>
+       </where>
+   </select>
+</mapper>
