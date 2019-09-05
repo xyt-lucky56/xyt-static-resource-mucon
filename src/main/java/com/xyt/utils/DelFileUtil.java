@@ -1,4 +1,4 @@
-package com.xyt.resource.utill;
+package com.xyt.utils;
 
 import java.io.File;
 

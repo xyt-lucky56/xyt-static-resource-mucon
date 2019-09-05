@@ -1,10 +1,9 @@
-package com.xyt.resource.service;
+package com.xyt.fileupload.service;
 
 import com.xyt.common.base.BaseService;
-import com.xyt.rescource.model.SysFile;
+import com.xyt.fileupload.model.SysFile;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author copyright by yk

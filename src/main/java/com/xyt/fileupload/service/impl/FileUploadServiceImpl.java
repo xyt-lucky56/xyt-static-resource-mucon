@@ -1,11 +1,11 @@
-package com.xyt.resource.service.impl;
+package com.xyt.fileupload.service.impl;
 
 import com.xyt.common.base.BaseEntity;
-import com.xyt.rescource.model.SysFile;
-import com.xyt.resource.service.FileUploadService;
-import com.xyt.resource.service.SysFileService;
-import com.xyt.resource.utill.DateUtil;
-import com.xyt.resource.utill.DelFileUtil;
+import com.xyt.fileupload.model.SysFile;
+import com.xyt.fileupload.service.FileUploadService;
+import com.xyt.fileupload.service.SysFileService;
+import com.xyt.utils.DateUtil;
+import com.xyt.utils.DelFileUtil;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -94,7 +94,7 @@ public class FileUploadServiceImpl implements FileUploadService {
         if (fSize > fileSize) {
             throw new RuntimeException("上传文件大小不能超过" + fileSize + "M!");
         }
-        String fileName = file.getOriginalFilename();
+//        String fileName = file.getOriginalFilename();
         String basePath = fileUploadBasePath + "/";//根目录
         String relativePath = savePath + "/";//业务目录
         String businessPath = DateUtil.dateToString(new Date(), "yyyyMMdd") + "/" + relativePath;//业务目录+年月日目录

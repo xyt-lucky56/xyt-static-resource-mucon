@@ -1,10 +1,11 @@
-package com.xyt.resource.dao;
-import java.util.List;
+package com.xyt.fileupload.dao;
 
 import com.xyt.common.base.BaseMapper;
-import com.xyt.rescource.model.SysFile;
+import com.xyt.fileupload.model.SysFile;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @author copyright by yk
@@ -19,7 +20,7 @@ public interface SysFileMapper extends BaseMapper<SysFile> {
      *
      * @param relId
      */
-    void deleteSysFileByRelId(@Param("relId") String relId, @Param("fileType")String fileType);
+    void deleteSysFileByRelId(@Param("relId") String relId, @Param("fileType") String fileType);
     
     /**
      * <pre>

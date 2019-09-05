@@ -1,10 +1,10 @@
-package com.xyt.resource.controller;
+package com.xyt.fileupload.controller;
 
 import com.xyt.common.base.utils.StringUtils;
-import com.xyt.rescource.model.SysFile;
-import com.xyt.resource.service.FileUploadService;
-import com.xyt.resource.service.SysFileService;
-import com.xyt.resource.utill.RequestHolder;
+import com.xyt.fileupload.model.SysFile;
+import com.xyt.fileupload.service.FileUploadService;
+import com.xyt.fileupload.service.SysFileService;
+import com.xyt.utils.RequestHolder;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

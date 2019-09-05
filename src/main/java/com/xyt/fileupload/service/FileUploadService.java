@@ -1,9 +1,7 @@
-package com.xyt.resource.service;
+package com.xyt.fileupload.service;
 
 
-import java.util.List;
-
-import com.xyt.rescource.model.SysFile;
+import com.xyt.fileupload.model.SysFile;
 import org.springframework.web.multipart.MultipartFile;
 
 

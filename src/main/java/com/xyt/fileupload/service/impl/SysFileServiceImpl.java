@@ -1,14 +1,13 @@
-package com.xyt.resource.service.impl;
+package com.xyt.fileupload.service.impl;
 
 import com.xyt.common.base.BaseEntity;
 import com.xyt.common.base.BaseServiceImpl;
 import com.xyt.common.base.utils.StringUtils;
-import com.xyt.rescource.model.SysFile;
-import com.xyt.resource.dao.SysFileMapper;
-import com.xyt.resource.service.SysFileService;
+import com.xyt.fileupload.dao.SysFileMapper;
+import com.xyt.fileupload.model.SysFile;
+import com.xyt.fileupload.service.SysFileService;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
@@ -21,7 +20,7 @@ import java.util.List;
  * @category 银行调用接口通用记录表
  */
 @Service
-public class SysFileServiceImpl extends BaseServiceImpl<SysFileMapper,SysFile> implements SysFileService {
+public class SysFileServiceImpl extends BaseServiceImpl<SysFileMapper, SysFile> implements SysFileService {
 
     @Autowired
 	SysFileMapper sysFileMapper;

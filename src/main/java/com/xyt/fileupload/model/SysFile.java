@@ -1,4 +1,4 @@
-package com.xyt.rescource.model;
+package com.xyt.fileupload.model;
 
 import com.xyt.common.base.BaseEntity;
 import io.swagger.annotations.ApiModel;
