@@ -11,7 +11,7 @@
     <groupId>com.xyt</groupId>
     <artifactId>static-resource-mucon</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>static-resource-mucon</name>
+    <name>xyt-static-resource-mucon</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
