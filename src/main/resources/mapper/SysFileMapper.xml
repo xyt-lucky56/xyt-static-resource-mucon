@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fengunion.scf.data.sysFile.mapper.SysFileMapper">
 	
-	<resultMap id="rm" type="com.xyt.rescource.model.SysFile">
+	<resultMap id="rm" type="com.xyt.fileupload.model.SysFile">
 		<result property="id" jdbcType="VARCHAR" column="id" />
 		<result property="fkRelId" jdbcType="VARCHAR" column="fk_rel_id" />
 		<result property="fileName" jdbcType="VARCHAR" column="file_name" />
