@@ -1,6 +1,7 @@
-/*
+
 package com.xyt.config;
 
+import org.aspectj.lang.annotation.Aspect;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +13,20 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
 import java.util.Properties;
 
 
+@Aspect
 @Configuration
 public class TransactionConfiguration {
 															
-    public static final String AOP_POINTCUT_EXPRESSION  = "execution(* com.xyt.resource.**.service.impl.*ServiceImpl.*(..))";
+    public static final String AOP_POINTCUT_EXPRESSION  = "execution(* com.xyt.**.service.impl.*ServiceImpl.*(..))";
     @Autowired
     private PlatformTransactionManager platformTransactionManager;
 
-    */
-/**
+
+    /**
      * 获取事务配置
      * 
      * @return
-     *//*
+     */
 
     public static Properties getAttrubites() {
         Properties attributes = new Properties();
@@ -88,4 +90,4 @@ public class TransactionConfiguration {
         pointcut.setExpression(AOP_POINTCUT_EXPRESSION);
         return new DefaultPointcutAdvisor(pointcut, ti);
     }
-}*/
+}

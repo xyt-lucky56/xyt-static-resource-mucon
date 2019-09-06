@@ -129,6 +129,7 @@ public class FileUploadServiceImpl implements FileUploadService {
                         //小型图片文件上传
                         this.uploadMinFile(bytes, path);
                     }
+                    fis.close();
                     logger.info("空白文件创建成功！");
                 } else {
                     logger.info("空白文件创建失败！");
@@ -378,7 +379,7 @@ public class FileUploadServiceImpl implements FileUploadService {
 
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
         ImageIO.write(tag, "JPEG", bOut);
-
+        bOut.close();
         return bOut.toByteArray();
     }
 
