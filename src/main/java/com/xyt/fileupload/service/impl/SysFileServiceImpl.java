@@ -1,6 +1,5 @@
 package com.xyt.fileupload.service.impl;
 
-import com.xyt.common.base.BaseEntity;
 import com.xyt.common.base.BaseServiceImpl;
 import com.xyt.common.base.utils.StringUtils;
 import com.xyt.fileupload.dao.SysFileMapper;
@@ -33,7 +32,6 @@ public class SysFileServiceImpl extends BaseServiceImpl<SysFileMapper, SysFile> 
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("fileType", sysFile.getFileType());
         criteria.andEqualTo("fkRelId", sysFile.getFkRelId());
-        criteria.andEqualTo("valid", BaseEntity.VALID);
     	return sysFileMapper.updateByExampleSelective(sysFile, example);
     }
     
@@ -42,14 +40,13 @@ public class SysFileServiceImpl extends BaseServiceImpl<SysFileMapper, SysFile> 
     	SysFile sysFile = new SysFile();
     	sysFile.setFkRelId(fkRelId);
     	sysFile.setFileType(fileType);
-    	sysFile.setValid(BaseEntity.VALID);
     	return sysFileMapper.selectOne(sysFile);
     }
     
 	@Override
 	public List<SysFile> findByRelIdAndFileType(String fkRelId, String fileType) {
         Example example = new Example(SysFile.class);
-        example.createCriteria().andEqualTo("fkRelId", fkRelId).andEqualTo("fileType", fileType).andEqualTo("valid", BaseEntity.VALID);
+        example.createCriteria().andEqualTo("fkRelId", fkRelId).andEqualTo("fileType", fileType);
         example.setOrderByClause("createTime  asc");
 		return sysFileMapper.selectByExample(example);
 	}
@@ -66,7 +63,6 @@ public class SysFileServiceImpl extends BaseServiceImpl<SysFileMapper, SysFile> 
 		Example.Criteria criteria = example.createCriteria();
 		criteria.andEqualTo("fkRelId", String.valueOf(fkRelId));
 		criteria.andEqualTo("fileType", fileType);
-		criteria.andEqualTo("valid", BaseEntity.VALID);
 		List<SysFile> list = sysFileMapper.selectByExample(example);
 		if (CollectionUtils.isEmpty(list)) {
 			return null;
@@ -103,7 +99,6 @@ public class SysFileServiceImpl extends BaseServiceImpl<SysFileMapper, SysFile> 
 //            criteria.andEqualTo("fkProjectId", sysFile.getFkProjectId());
 //        }
         criteria.andEqualTo("fkRelId", sysFile.getFkRelId());
-        criteria.andEqualTo("valid", BaseEntity.VALID);
         return this.sysFileMapper.selectByExample(example);
     }
 
@@ -194,7 +189,6 @@ public class SysFileServiceImpl extends BaseServiceImpl<SysFileMapper, SysFile> 
 		SysFile sysFile = new SysFile();
     	sysFile.setFileType(fileType);
     	sysFile.setFkRelId(relId);
-    	sysFile.setValid(BaseEntity.VALID);
     	List<SysFile> list = this.findSysFileByRelId(sysFile);
     	if (list != null && !list.isEmpty()) {
     		sysFile = list.get(0);
@@ -219,7 +213,6 @@ public class SysFileServiceImpl extends BaseServiceImpl<SysFileMapper, SysFile> 
         criteria.andEqualTo("fkRelId", relId);
         criteria.andEqualTo("fileType", fileType);
         SysFile sysFile = new SysFile();
-        sysFile.setValid(BaseEntity.INVALID);
         sysFileMapper.updateByExampleSelective(sysFile, example);
     }
 }

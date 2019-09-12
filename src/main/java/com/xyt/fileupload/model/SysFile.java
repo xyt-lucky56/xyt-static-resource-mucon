@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.Column;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import java.util.Date;
 
 /**
  * @author copyright by 武汉信运通信息产业有限公司
@@ -72,11 +73,14 @@ public class SysFile extends BaseEntity {
     @ApiModelProperty(value="最后修改人IP")
     @Column(name = "last_modify_ip")
     private String lastModifyIp;//最后修改人IP
+    /** 创建时间 */
+    @ApiModelProperty(value = "创建时间", hidden = true)
+    @Column(name = "create_time")
+    private Date createTime;
 
     /** 文件预览路径 **/
     @Transient
     private String fileViewUrl;
-
 
     public String getFileViewUrl() {
         return fileViewUrl;
@@ -84,14 +88,6 @@ public class SysFile extends BaseEntity {
 
     public void setFileViewUrl(String fileViewUrl) {
         this.fileViewUrl = fileViewUrl;
-    }
-
-    public String getId(){
-        return id;
-    }
-
-    public void setId(String id){
-        this.id=id;
     }
     public String getFkRelId(){
         return fkRelId;
@@ -183,5 +179,12 @@ public class SysFile extends BaseEntity {
 
     public void setLastModifyIp(String lastModifyIp){
         this.lastModifyIp=lastModifyIp;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

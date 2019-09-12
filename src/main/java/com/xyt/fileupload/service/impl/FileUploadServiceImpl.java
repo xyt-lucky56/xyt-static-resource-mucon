@@ -175,10 +175,7 @@ public class FileUploadServiceImpl implements FileUploadService {
             } catch (Exception e) {
                 throw new RuntimeException("文件服务器上删除文件出错");
             }
-            SysFile sysFile = new SysFile();
-            sysFile.setId(file.getId());
-            sysFile.setValid(BaseEntity.INVALID);
-            sysFileService.update(sysFile);
+            sysFileService.deleteById(file.getId());
         }
     }
 
